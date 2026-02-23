@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal da Nota Fiscal Eletrônica - Estudo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo-area">
+                <img src="https://via.placeholder.com/150x50?text=NF-e+Logo" alt="Logo NF-e">
+            </div>
+        </header>
+
+        <nav class="main-nav">
+            <ul>
+                <li>Serviços</li>
+                <li>Legislação</li>
+                <li>Documentos</li>
+                <li>Downloads</li>
+            </ul>
+        </nav>
+
+        <main class="content-wrapper">
+            <section class="consult-section">
+                <h2 class="section-title">Consultar NF-e</h2>
+                
+                <div class="form-box">
+                    <label for="chave">Chave de Acesso da NF-e</label>
+                    <input type="text" id="chave" maxlength="44" placeholder="Digite os 44 dígitos">
+
+                    <div class="captcha-container">
+                        <div class="captcha-box">
+                            <input type="checkbox" id="human-check">
+                            <span>Sou humano (Simulação)</span>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button id="btn-continuar" class="btn-orange">Continuar</button>
+                        <button class="btn-gray">Limpar</button>
+                    </div>
+                </div>
+
+                <div class="instructions">
+                    <h3>Observações</h3>
+                    <ol>
+                        <li>Chave de Acesso: deve ser informado o número de 44 dígitos presentes no DANFE.</li>
+                        <li>A verificação humana é necessária para evitar acessos automatizados.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <aside class="sidebar">
+                <div class="sidebar-item">Estatísticas da NF-e</div>
+                <div class="sidebar-item">Área Restrita</div>
+                <div class="sidebar-item">Perguntas Frequentes</div>
+            </aside>
+        </main>
+    </div>
+
+    <script>
+        document.getElementById('btn-continuar').addEventListener('click', function() {
+            const chave = document.getElementById('chave').value;
+            const isHuman = document.getElementById('human-check').checked;
+
+            if (chave.length === 44 && isHuman) {
+                alert('Chave validada! O download do PDF começará agora.');
+                
+                // Simulação de download de PDF
+                // Substitua o link abaixo por um link real de PDF ou um arquivo local
+                const link = document.createElement('a');
+                link.href = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
+                link.download = 'NotaFiscal_Exemplo.pdf';
+                link.click();
+            } else {
+                alert('Por favor, preencha os 44 dígitos e marque a caixa "Sou humano".');
+            }
+        });
+    </script>
+</body>
+</html>

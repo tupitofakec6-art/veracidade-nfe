@@ -1,218 +1,266 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Portal da Nota Fiscal Eletrônica - Estudo de Interface</title>
-    
-    <style>
-        /* === CSS UNIFICADO (PALETA DE CORES DA IMAGEM) === */
-        body {
-            background-color: #f4f4f4;
-            font-family: Verdana, Arial, sans-serif;
-            margin: 0;
-            font-size: 12px;
-        }
+<meta charset="UTF-8">
+<title>Consultar NF-e</title>
 
-        #divCentral {
-            width: 1000px;
-            margin: 0 auto;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
+<style>
 
-        /* Cabeçalho com o degradê laranja suave da foto */
-        #cabecalho {
-            background: linear-gradient(to bottom, #fde9d4 0%, #ffffff 100%);
-            height: 120px;
-            border-bottom: 3px solid #e6a15c;
-            display: flex;
-            align-items: center;
-            padding: 0 20px;
-        }
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-        /* Menu de abas laranja */
-        #menu {
-            background-color: #e6a15c;
-            height: 35px;
-        }
+/* BODY */
+body{
+    background:#f2f2f2;
+    color:#333;
+}
 
-        .abasMenu {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
+/* BARRA GOVERNO */
+.top-bar{
+    background:#efefef;
+    height:40px;
+    display:flex;
+    align-items:center;
+    padding:0 20px;
+    font-size:14px;
+    border-bottom:1px solid #ddd;
+}
 
-        .abasMenu li a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            display: block;
-            font-weight: bold;
-            border-right: 1px solid #d68a40;
-        }
+.top-bar span{
+    font-weight:bold;
+    margin-right:20px;
+}
 
-        .abasMenu li a:hover {
-            background-color: #d68a40;
-        }
+/* HEADER */
+.header{
+    background:linear-gradient(to right, #efe4cf, #f4d7a6);
+    padding:25px 40px;
+    border-bottom:3px solid #d39a43;
+}
 
-        /* Estrutura de colunas */
-        .container-flex {
-            display: flex;
-            flex-direction: row-reverse; /* Sidebar na direita igual à imagem */
-        }
+.header h1{
+    font-size:28px;
+    color:#9b6a1f;
+    letter-spacing:1px;
+}
 
-        #barraDireita {
-            width: 250px;
-            padding: 15px;
-            background-color: #fff;
-        }
+.header small{
+    display:block;
+    margin-top:5px;
+    color:#c0802c;
+    font-size:16px;
+}
 
-        #conteudo {
-            flex: 1;
-            padding: 20px;
-        }
+/* MENU */
+.menu{
+    background:#e8d8bd;
+    display:flex;
+    padding-left:40px;
+    border-bottom:2px solid #d39a43;
+}
 
-        /* Estilo dos boxes da sidebar */
-        .sidebar-box {
-            background-color: #e6a15c;
-            color: white;
-            padding: 8px 12px;
-            margin-bottom: 8px;
-            font-weight: bold;
-            font-size: 11px;
-            border-radius: 2px;
-        }
+.menu a{
+    padding:12px 25px;
+    text-decoration:none;
+    color:#7a5a27;
+    font-weight:bold;
+    border-right:1px solid #d5b98f;
+}
 
-        /* Área de Consulta (Fundo Bege) */
-        .divTituloPrincipal {
-            background-color: #e6a15c;
-            color: white;
-            padding: 6px 12px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
+.menu a:hover{
+    background:#d39a43;
+    color:white;
+}
 
-        .divComBordas {
-            background-color: #f9f9f4; /* Cor bege da imagem */
-            border: 1px solid #ccc;
-            padding: 40px;
-            text-align: center;
-        }
+/* CONTAINER */
+.container{
+    width:1100px;
+    margin:30px auto;
+    display:flex;
+    gap:30px;
+}
 
-        .txtChaveAcesso {
-            width: 90%;
-            height: 25px;
-            border: 1px solid #999;
-            margin: 10px 0;
-            padding: 0 5px;
-        }
+/* MAIN */
+.main{
+    flex:3;
+}
 
-        /* Botões com estilo 3D clássico */
-        .botao {
-            background: linear-gradient(to bottom, #fde9d4 0%, #e6a15c 100%);
-            border: 1px solid #d68a40;
-            padding: 6px 25px;
-            font-weight: bold;
-            color: #333;
-            cursor: pointer;
-            border-radius: 3px;
-            margin: 5px;
-        }
+/* SIDEBAR */
+.sidebar{
+    flex:1;
+}
 
-        .botao:hover {
-            filter: brightness(0.9);
-        }
+/* TÍTULO */
+.section-title{
+    background:#d39a43;
+    color:white;
+    padding:8px 15px;
+    font-weight:bold;
+    width:200px;
+    margin-bottom:20px;
+}
 
-        /* Observações em Marrom */
-        .observacoes {
-            color: #8a4a00;
-            font-size: 11px;
-            text-align: left;
-            margin-top: 25px;
-            line-height: 1.6;
-        }
-    </style>
+/* BOX CONSULTA */
+.consulta-box{
+    background:#f9f5ef;
+    border:1px solid #e0c49c;
+    padding:40px;
+}
+
+.consulta-box label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
+    color:#9b6a1f;
+}
+
+.consulta-box input{
+    width:100%;
+    padding:10px;
+    border:1px solid #c9c9c9;
+    margin-bottom:25px;
+    font-size:14px;
+}
+
+/* CAPTCHA FAKE */
+.captcha{
+    border:1px solid #ddd;
+    background:#fff;
+    padding:20px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.captcha-box{
+    width:25px;
+    height:25px;
+    border:2px solid #aaa;
+}
+
+/* BOTÕES */
+.buttons{
+    display:flex;
+    gap:15px;
+}
+
+.btn{
+    padding:8px 25px;
+    border:none;
+    cursor:pointer;
+    font-weight:bold;
+    background:linear-gradient(to bottom, #f3c17d, #d39a43);
+    color:#4e3a1f;
+    border:1px solid #b07c34;
+}
+
+.btn:hover{
+    background:linear-gradient(to bottom, #d39a43, #b07c34);
+    color:white;
+}
+
+/* OBS */
+.obs{
+    margin-top:30px;
+    font-size:14px;
+    color:#8a5c1e;
+}
+
+.obs li{
+    margin-bottom:10px;
+}
+
+/* SIDEBAR */
+.stats{
+    background:#eaa64e;
+    padding:15px;
+    color:white;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.sidebar-box{
+    background:#f5f5f5;
+    padding:12px;
+    border:1px solid #ddd;
+    margin-bottom:10px;
+}
+
+</style>
 </head>
+
 <body>
 
-    <div id="divCentral">
-        <header id="cabecalho">
-            <h1 style="color:#e6a15c; margin:0;">NF-e <span style="font-size:14px; color:#666;">NOTA FISCAL ELETRÔNICA</span></h1>
-        </header>
+<div class="top-bar">
+    <span>BRASIL</span>
+    Simplifique! &nbsp;&nbsp; Comunica BR &nbsp;&nbsp; Participe &nbsp;&nbsp; Acesso à Informação
+</div>
 
-        <nav id="menu">
-            <ul class="abasMenu">
-                <li><a href="#">Serviços</a></li>
-                <li><a href="#">Legislação</a></li>
-                <li><a href="#">Documentos</a></li>
-                <li><a href="#">Downloads</a></li>
-            </ul>
-        </nav>
+<div class="header">
+    <h1>NF-e</h1>
+    <small>NOTA FISCAL ELETRÔNICA</small>
+</div>
 
-        <div class="container-flex">
-            <aside id="barraDireita">
-                <div class="sidebar-box">Estatísticas da NF-e</div>
-                <div style="background:#eee; padding:10px; font-size:10px; margin-bottom:15px; border:1px solid #ccc;">
-                    55,669 bilhões autorizadas
-                </div>
-                <div class="sidebar-box">Área Restrita do Fisco</div>
-                <div class="sidebar-box">Central de Atendimento</div>
-                <div class="sidebar-box">Perguntas Frequentes</div>
-            </aside>
+<div class="menu">
+    <a href="#">Serviços</a>
+    <a href="#">Legislação</a>
+    <a href="#">Documentos</a>
+    <a href="#">Downloads</a>
+</div>
 
-            <main id="conteudo">
-                <div class="divTituloPrincipal">Consultar NF-e</div>
-                
-                <div class="divComBordas">
-                    <label>Chave de Acesso da NF-e</label><br>
-                    <input type="text" id="chaveAcesso" class="txtChaveAcesso" maxlength="44" placeholder="44 dígitos">
-                    
-                    <div style="margin: 20px 0; display: inline-block; border: 1px solid #ccc; padding: 15px; background: #fff;">
-                        <input type="checkbox" id="captcha"> <label>Sou humano (hCaptcha)</label>
-                    </div>
+<div class="container">
 
-                    <div>
-                        <button class="botao" id="btnContinuar">Continuar</button>
-                        <button class="botao" type="reset">Limpar</button>
-                    </div>
-                </div>
+    <div class="main">
 
-                <div class="observacoes">
-                    <strong>Observações</strong><br>
-                    1. Chave de Acesso: deve ser informado o número de 44 dígitos presentes no DANFE.<br>
-                    2. Verificação necessária para evitar consultas automatizadas.<br>
-                    3. Mantenha os cookies habilitados no navegador.
-                </div>
-            </main>
+        <div class="section-title">Consultar NF-e</div>
+
+        <div class="consulta-box">
+            <label>Chave de Acesso da NF-e</label>
+            <input type="text" value="21240603526566000148569802430901751367896220">
+
+            <div class="captcha">
+                <div class="captcha-box"></div>
+                <span>Sou humano</span>
+            </div>
+
+            <div class="buttons">
+                <button class="btn">Continuar</button>
+                <button class="btn">Limpar</button>
+            </div>
         </div>
+
+        <ul class="obs">
+            <li>Chave de Acesso: deve ser informado o número de 44 dígitos presentes no DANFE.</li>
+            <li>Digite os caracteres da imagem para validação.</li>
+            <li>É necessário que o navegador esteja habilitado para gravação de cookies.</li>
+        </ul>
+
     </div>
 
-    <script>
-        document.getElementById('btnContinuar').onclick = function() {
-            const campo = document.getElementById('chaveAcesso');
-            const captcha = document.getElementById('captcha');
-            
-            // Remove espaços e verifica se tem 44 números
-            const valor = campo.value.replace(/\D/g, '');
+    <div class="sidebar">
 
-            if (valor.length === 44 && captcha.checked) {
-                alert("Verificação concluída! O download do PDF iniciará.");
-                
-                // Simulação de download
-                const link = document.createElement('a');
-                // IMPORTANTE: Tenha um arquivo chamado "nota.pdf" na mesma pasta
-                link.href = 'nota.pdf'; 
-                link.download = 'NF-e_Consultada.pdf';
-                link.click();
-            } else if (valor.length !== 44) {
-                alert("A chave deve ter 44 dígitos.");
-            } else {
-                alert("Marque a caixa 'Sou humano'.");
-            }
-        };
-    </script>
+        <div class="stats">
+            Estatísticas da NF-e<br><br>
+            NF-e Autorizadas<br>
+            55,669 bilhões<br><br>
+            Número de Emissores<br>
+            2,708 milhões
+        </div>
+
+        <div class="sidebar-box">Área Restrita do Fisco</div>
+        <div class="sidebar-box">Central de Atendimento</div>
+        <div class="sidebar-box">Perguntas Frequentes</div>
+        <div class="sidebar-box">Portais e Secretarias</div>
+
+    </div>
+
+</div>
 
 </body>
 </html>
